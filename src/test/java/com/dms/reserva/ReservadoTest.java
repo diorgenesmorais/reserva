@@ -1,7 +1,6 @@
 package com.dms.reserva;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 
@@ -57,6 +56,16 @@ private Reservado reservado;
 		LocalDate sair = LocalDate.of(2019, 12, 1);
 		// reservado de 30/11 a 02/12
 		// entrar 29/11 e sair 01/12
+		assertFalse(reservado.isDisponivel(entrar, sair));
+	}
+	
+	@Test
+	public void naoDisponivel() throws Exception {
+		reservado = new Reservado(LocalDate.of(2019, 11, 30), LocalDate.of(2019, 12, 4));
+		LocalDate entrar = LocalDate.of(2019, 12, 1);
+		LocalDate sair = LocalDate.of(2019, 12, 2);
+		// reservado de 30/11 a 04/12
+		// entrar 1/12 e sair 02/12
 		assertFalse(reservado.isDisponivel(entrar, sair));
 	}
 }

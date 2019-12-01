@@ -26,25 +26,25 @@ public class ReservaImpl {
 		LocalDate sair = LocalDate.of(2019, 12, 1);
 
 		// retorna a reserva
-		Optional<Reserva> reserva1 = reservas.stream().filter(r -> {
+		Optional<Reserva> quarto1 = reservas.stream().filter(r -> {
 			Reservado reservado = new Reservado(r.getEntrada(), r.getSaida());
 			return !reservado.isDisponivel(entrar, sair);
 		}).findAny();
 
 		// Está disponível?
-		System.out.println(reserva1.isEmpty());
+		System.out.println(quarto1.isEmpty());
 
 		// reservar de 1/12 a 2/12
 		LocalDate entrar2 = LocalDate.of(2019, 12, 1);
 		LocalDate sair2 = LocalDate.of(2019, 12, 2);
 
-		Optional<Reserva> reserva2 = reservas.stream().filter(r -> {
+		Optional<Reserva> quarto2 = reservas.stream().filter(r -> {
 			Reservado reservado = new Reservado(r.getEntrada(), r.getSaida());
 			return !reservado.isDisponivel(entrar2, sair2);
 		}).findFirst();
 
 		// Está disponível?
-		System.out.println(reserva2.isEmpty());
+		System.out.println(quarto2.isEmpty());
 
 	}
 
