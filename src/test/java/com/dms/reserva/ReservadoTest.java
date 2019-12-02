@@ -68,4 +68,26 @@ private Reservado reservado;
 		// entrar 1/12 e sair 02/12
 		assertFalse(reservado.isDisponivel(entrar, sair));
 	}
+	
+	@Test
+	public void deveContarOsDias() throws Exception {
+		Long expected = 2L;
+		LocalDate entrar = LocalDate.of(2019, 12, 1);
+		LocalDate sair = LocalDate.of(2019, 12, 3);
+		
+		reservado = new Reservado(entrar, sair);
+
+		assertEquals(expected, reservado.getDias());
+	}
+	
+	@Test
+	public void deveContarDiasNegativo() throws Exception {
+		Long expected = -2L;
+		LocalDate entrar = LocalDate.of(2019, 12, 1);
+		LocalDate sair = LocalDate.of(2019, 12, 3);
+		
+		reservado = new Reservado(sair, entrar);
+
+		assertEquals(expected, reservado.getDias());
+	}
 }
