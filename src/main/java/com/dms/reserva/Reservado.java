@@ -2,6 +2,7 @@ package com.dms.reserva;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -85,6 +86,11 @@ public class Reservado implements Serializable {
 		} else if (!saida.equals(other.saida))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservado [entrada=" + entrada.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ", saida=" + saida.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "]";
 	}
 
 }
